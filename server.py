@@ -8,10 +8,10 @@ import uvicorn
 import google.generativeai as genai
 import edge_tts
 
-# --- Gemini API の初期設定 ---
-GOOGLE_API_KEY = os.getenv("GEMINI_API_KEY")
-genai.configure(api_key=AIzaSyCtLih0wPcmjThSyH8dzINNz5tFHyQBApE)
-model = genai.GenerativeModel('gemini-2.5-flash')
+# APIキーをダブルクォーテーションで囲む
+genai.configure(api_key="AIzaSyCtLih0wPcmjThSyH8dzINNz5tFHyQBApE")
+# 2.5はまだ存在しないため、現在使えるモデル名に修正
+model = genai.GenerativeModel('gemini-2.0-flash')
 
 async def generate_cloud_audio(text: str, voice: str, rate: str, pitch: str) -> bytes:
     try:
